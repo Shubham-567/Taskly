@@ -16,7 +16,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/auth", authRoutes);
-app.use("/api/tasks", taskRoutes); // todo: test task api in postman
+app.use("/api/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
   res.send("Taskly api is ruining");
