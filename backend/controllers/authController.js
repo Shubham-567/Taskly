@@ -13,13 +13,15 @@ export const registerUser = async (req, res) => {
 
     // check if all fields exists
     if (!name || !email || !password) {
-      return res.status(400).json({ message: "All fields are required" });
+      res.status(400).json({ message: "All fields are required" });
+      return;
     }
 
     // check if user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
       res.status(400).json({ message: "User already exists" });
+      return;
     }
 
     // hash the password
@@ -56,6 +58,7 @@ export const loginUser = async (req, res) => {
     // check if email and pass exists
     if (!email || !password) {
       res.status(400).json({ message: "Email and Password are required" });
+      return;
     }
 
     // find user
@@ -87,10 +90,12 @@ export const loginUser = async (req, res) => {
 
 export const getUserProfile = async (req, res) => {
   try {
+    // note: req.user is coming from protect middleware
     const user = await User.findById(req.user.id);
 
     if (!user) {
       res.status(400).json({ message: "User not found" });
+      return;
     }
 
     res.status(200).json({

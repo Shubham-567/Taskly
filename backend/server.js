@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import taskRoutes from "./routes/taskRoutes.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // routes
 app.use("/api/auth", authRoutes);
+app.use("/api/tasks", taskRoutes); // todo: test task api in postman
 
 app.get("/", (req, res) => {
   res.send("Taskly api is ruining");
