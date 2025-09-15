@@ -8,20 +8,20 @@ import {
 
 const useTaskStore = create((set, get) => ({
   tasks: [],
-  loading: false,
+  taskLoading: false,
   error: null,
 
   loadTasks: async () => {
     try {
-      set({ loading: true, error: null });
+      set({ taskLoading: true, error: null });
 
       const res = await fetchTasks();
 
-      set({ tasks: res, loading: false });
+      set({ tasks: res, taskLoading: false });
     } catch (err) {
       set({
         error: err.response?.data?.message || "Failed to load task",
-        loading: false,
+        taskLoading: false,
       });
     }
   },

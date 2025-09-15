@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className='px-6 sm:px-8 py-3 bg-surface border-b border-border'>
+    <header className='fixed top-0 left-0 w-full px-6 sm:px-8 py-3 bg-surface border-b border-border'>
       <nav className='flex items-center justify-between gap-4 text-2xl font-semibold'>
         <Link href='/' className='logo flex items-center gap-2'>
           <Box className='size-8 text-primary-500' />
@@ -44,7 +44,7 @@ const Navbar = () => {
               {user?.name.charAt(0) || "U"}
             </button>
 
-            {/* display full name on menu open  */}
+            {/* user profile menu */}
             {isMenuOpen && (
               <div className='absolute top-12 right-0 bg-surface ring ring-border rounded-lg shadow-lg py-2 px-4  z-10 cursor-default'>
                 <div className='flex justify-center flex-col gap-2'>

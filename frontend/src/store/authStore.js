@@ -4,37 +4,37 @@ import { getProfile, loginUser, registerUser } from "../services/authApi";
 const useAuthStore = create((set) => ({
   user: null,
   token: localStorage.getItem("token") || null,
-  loading: false,
+  userLoading: false,
   error: null,
 
   register: async (data) => {
     try {
-      set({ loading: true, error: null });
+      set({ userLoading: true, error: null });
 
       const res = await registerUser(data);
       localStorage.setItem("token", res.token);
 
-      set({ user: res, token: res.token, loading: false });
+      set({ user: res, token: res.token, userLoading: false });
     } catch (err) {
       set({
         error: err.response?.data?.message || "Registration failed",
-        loading: false,
+        userLoading: false,
       });
     }
   },
 
   login: async (data) => {
     try {
-      set({ loading: true, error: null });
+      set({ userLoading: true, error: null });
 
       const res = await loginUser(data);
       localStorage.setItem("token", res.token);
 
-      set({ user: res, token: res.token, loading: false });
+      set({ user: res, token: res.token, userLoading: false });
     } catch (err) {
       set({
         error: err.response?.data?.message || "Login failed",
-        loading: false,
+        userLoading: false,
       });
     }
   },
@@ -46,13 +46,13 @@ const useAuthStore = create((set) => ({
 
   fetchProfile: async () => {
     try {
-      set({ loading: true });
+      set({ userLoading: true });
 
       const res = await getProfile();
 
-      set({ user: res, loading: false });
+      set({ user: res, userLoading: false });
     } catch (err) {
-      set({ user: null, token: null, loading: false });
+      set({ user: null, token: null, userLoading: false });
       localStorage.removeItem("token");
     }
   },
