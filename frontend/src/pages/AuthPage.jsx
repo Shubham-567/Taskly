@@ -6,7 +6,7 @@ import Button from "../components/Button";
 import { Navigate } from "react-router-dom";
 
 const AuthPage = () => {
-  const [mode, setMode] = useState("signup"); // 'login' or 'signup'
+  const [mode, setMode] = useState("login"); // 'login' or 'signup'
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
   const { register, login, error, leading, token } = useAuthStore();
