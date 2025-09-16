@@ -10,7 +10,7 @@ export const Input = ({ label, icon, type = "text", ...inputProps }) => {
           {label}
         </label>
       ) : null}
-      <div className='bg-bg flex items-center gap-2 p-2 border border-border rounded-lg shadow   focus-within:ring-2 ring-primary-500 mt-0.5 w-full'>
+      <div className='bg-surface-secondary flex items-center gap-2 p-2 border border-border rounded-lg shadow focus-within:ring-2 ring-primary-500 mt-0.5 w-full'>
         {icon ? <span>{icon}</span> : null}
         <input
           id={label + "-input"}

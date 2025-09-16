@@ -1,16 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import useAuthStore from "../store/authStore";
 import FilterBar from "../components/FilterBar";
 import TaskCard from "../components/TaskCard";
 import useTaskStore from "../store/taskStore";
 import { Plus } from "lucide-react";
+import TaskModal from "../components/TaskModal";
 
 // todo: add a page loader until loading is true ........
 
 const Dashboard = () => {
   const { fetchProfile } = useAuthStore();
   const { tasks, loadTasks, taskLoading } = useTaskStore();
+  const [isModalOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     fetchProfile();
@@ -24,7 +26,6 @@ const Dashboard = () => {
       <div className='mt-15 px-6 sm:px-8 py-4 space-y-4'>
         {/* Filter bar */}
         <FilterBar />
-
         {taskLoading ? (
           <p>Loading...</p>
         ) : (
@@ -36,11 +37,14 @@ const Dashboard = () => {
             )}
           </div>
         )}
-
-        <button className='fixed bottom-6 right-6 p-2 bg-primary-500 hover:opacity-90 rounded-full'>
+        <button
+          onClick={() => setIsMenuOpen(true)}
+          className='fixed bottom-6 right-6 p-2 bg-primary-500 hover:opacity-90 rounded-full'>
           <Plus className='size-6 text-primary-foreground cursor-pointer' />
         </button>
       </div>
+
+      {isModalOpen && <TaskModal onClose={() => setIsMenuOpen(false)} />}
     </div>
   );
 };

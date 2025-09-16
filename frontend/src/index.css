@@ -10,6 +10,7 @@
   /* Neutral (Light Theme) */
   --color-bg: hsl(210, 40%, 96%);
   --color-surface: hsl(0, 0%, 100%);
+  --color-surface-secondary: hsl(210, 40%, 96%);
   --color-border: hsl(220, 14%, 91%);
   --color-border-hover: hsl(220, 9%, 85%);
   --color-txt-primary: hsl(222, 47%, 12%);
@@ -31,6 +32,7 @@
   /* Neutral (Light Theme) */
   --color-bg: hsl(222, 47%, 11%);
   --color-surface: hsl(217, 33%, 17%);
+  --color-surface-secondary: hsl(215, 25%, 27%);
   --color-border: hsl(215, 25%, 27%);
   --color-border-hover: hsl(215, 19%, 35%);
   --color-txt-primary: hsl(210, 40%, 96%);
@@ -55,6 +57,7 @@
   /* Neutral (Light Theme) */
   --color-bg: var(--color-bg);
   --color-surface: var(--color-surface);
+  --color-surface-secondary: var(--color-surface-secondary);
   --color-border: var(--color-border);
   --color-border-hover: var(--color-border-hover);
   --color-txt-primary: var(--color-txt-primary);
