@@ -51,7 +51,9 @@ const useTaskStore = create((set, get) => ({
     try {
       await deleteTask(id);
 
-      set({ tasks: get().tasks.map((task) => task._id !== id) });
+      set((state) => ({
+        tasks: state.tasks.filter((task) => task._id !== id),
+      }));
     } catch (err) {
       set({ error: err.response?.data?.message || "Failed to delete task" });
     }
@@ -61,9 +63,9 @@ const useTaskStore = create((set, get) => ({
     try {
       const updated = await toggleTaskStatus(id);
 
-      set({
-        task: get().tasks.map((task) => (task._id === id ? updated : task)),
-      });
+      set((state) => ({
+        tasks: state.tasks.map((task) => (task._id === id ? updated : task))
+      }))
     } catch (err) {
       set({ error: err.response?.data?.message || "Failed to toggle task" });
     }

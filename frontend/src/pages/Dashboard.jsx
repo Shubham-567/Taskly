@@ -31,7 +31,13 @@ const Dashboard = () => {
         ) : (
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
             {tasks.length > 0 ? (
-              tasks.map((task) => <TaskCard key={task._id} task={task} />)
+              tasks.map((task) => (
+                <TaskCard
+                  key={task._id}
+                  task={task}
+                  openModal={() => setIsMenuOpen(true)}
+                />
+              ))
             ) : (
               <p>No tasks found</p>
             )}
