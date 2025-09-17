@@ -13,6 +13,8 @@ const Dashboard = () => {
   const { fetchProfile } = useAuthStore();
   const { tasks, loadTasks, taskLoading } = useTaskStore();
   const [isModalOpen, setIsMenuOpen] = useState(false);
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [taskModalData, setTaskModalData] = useState({});
 
   useEffect(() => {
     fetchProfile();
@@ -35,7 +37,11 @@ const Dashboard = () => {
                 <TaskCard
                   key={task._id}
                   task={task}
-                  openModal={() => setIsMenuOpen(true)}
+                  openModal={() => {
+                    setIsMenuOpen(true);
+                    setIsEditMode(true);
+                    setTaskModalData(task);
+                  }}
                 />
               ))
             ) : (
@@ -44,13 +50,23 @@ const Dashboard = () => {
           </div>
         )}
         <button
-          onClick={() => setIsMenuOpen(true)}
+          onClick={() => {
+            setIsEditMode(false);
+            setIsMenuOpen(true);
+            setTaskModalData({});
+          }}
           className='fixed bottom-6 right-6 p-2 bg-primary-500 hover:opacity-90 rounded-full'>
           <Plus className='size-6 text-primary-foreground cursor-pointer' />
         </button>
       </div>
 
-      {isModalOpen && <TaskModal onClose={() => setIsMenuOpen(false)} />}
+      {isModalOpen && (
+        <TaskModal
+          mode={isEditMode ? "edit" : "add"}
+          task={taskModalData}
+          onClose={() => setIsMenuOpen(false)}
+        />
+      )}
     </div>
   );
 };

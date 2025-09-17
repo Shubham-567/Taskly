@@ -2,7 +2,7 @@ import { Pen, Trash2 } from "lucide-react";
 import useTaskStore from "../store/taskStore";
 
 const TaskCard = ({ task, openModal }) => {
-  const { removeTask, toggleTaskStatus } = useTaskStore();
+  const { removeTask, toggleTaskStatus, tasks } = useTaskStore();
 
   return (
     <div className='bg-surface border border-border rounded-md flex flex-col justify-between gap-2 p-4'>
@@ -22,7 +22,7 @@ const TaskCard = ({ task, openModal }) => {
           />
         </label>
 
-        <p className='text-base text-txt-secondary mt-1 min-h-[7rem]'>
+        <p className='text-base text-txt-secondary mt-1 min-h-[6rem]'>
           {task.description}
         </p>
       </div>

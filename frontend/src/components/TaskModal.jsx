@@ -3,12 +3,12 @@ import Button from "./Button";
 import { Input } from "./Input";
 import useTaskStore from "../store/taskStore";
 
-const TaskModal = ({ onClose }) => {
-  const { addTask } = useTaskStore();
+const TaskModal = ({ onClose, mode = "add", task }) => {
+  const { addTask, editTask } = useTaskStore();
 
   const [form, setForm] = useState({
-    title: "",
-    description: "",
+    title: task.title || "",
+    description: task.description || "",
   });
 
   const handleSubmit = async (e) => {
@@ -18,9 +18,15 @@ const TaskModal = ({ onClose }) => {
       alert("Task title and description are required");
     }
 
-    await addTask(form);
-
-    console.log("Task added: ", form);
+    if (mode.toLowerCase() === "add") {
+      await addTask(form);
+      console.log("Task added: ", form);
+    } else if (mode.toLowerCase() === "edit") {
+      await editTask(task._id, form);
+      console.log("Task edited: ", form);
+    } else {
+      console.log("invalid mode");
+    }
 
     onClose();
   };
@@ -30,7 +36,9 @@ const TaskModal = ({ onClose }) => {
       <form
         onSubmit={handleSubmit}
         className='bg-surface rounded-lg shadow-lg p-6 space-y-4 w-full max-w-md'>
-        <h2 className='text-2xl font-semibold text-txt-primary'>Add Task</h2>
+        <h2 className='text-2xl font-semibold text-txt-primary'>
+          {mode.toLowerCase() === "add" ? "Add" : "Edit"} Task
+        </h2>
 
         <Input
           label='Title'
@@ -59,7 +67,10 @@ const TaskModal = ({ onClose }) => {
         <div className='flex items-center justify-end gap-4'>
           <Button text='Cancel' variant='secondary' onClick={onClose} />
 
-          <Button text='Save' type='submit' />
+          <Button
+            text={mode.toLowerCase() === "add" ? "Add" : "Save"}
+            type='submit'
+          />
         </div>
       </form>
     </div>
