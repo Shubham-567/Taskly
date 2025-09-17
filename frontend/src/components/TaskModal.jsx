@@ -9,6 +9,7 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
   const [form, setForm] = useState({
     title: task.title || "",
     description: task.description || "",
+    status: task.status || "pending",
   });
 
   const handleSubmit = async (e) => {
@@ -64,11 +65,47 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
           </div>
         </div>
 
+        {mode.toLowerCase() === "edit" && (
+          <div className='flex items-center justify-between gap-4 p-4 bg-surface-secondary/50 rounded-lg'>
+            <span className='font-medium text-txt-primary'>Status</span>
+
+            <label className='inline-flex items-center cursor-pointer'>
+              <input
+                type='checkbox'
+                value=''
+                className='sr-only peer'
+                checked={form.status === "completed"}
+                onChange={(e) =>
+                  setForm({
+                    ...form,
+                    status: e.target.checked ? "completed" : "pending",
+                  })
+                }
+              />
+
+              <span className='me-3 text-sm font-medium text-primary-500 peer-checked:text-txt-primary'>
+                Pending
+              </span>
+
+              <div
+                className="relative w-11 h-6 bg-surface-secondary rounded-full 
+                peer peer-checked:after:translate-x-full peer-checked:bg-primary-500 
+                after:content-[''] after:absolute after:top-[2px] after:start-[2px] 
+                after:bg-primary-foreground after:rounded-full after:size-5 after:transition-all
+                peer-focus:outline-none ring-2 ring-border-hover peer-focus:ring-primary-500"></div>
+
+              <span className='ms-3 text-sm font-medium text-txt-primary peer-checked:text-primary-500'>
+                Completed
+              </span>
+            </label>
+          </div>
+        )}
+
         <div className='flex items-center justify-end gap-4'>
           <Button text='Cancel' variant='secondary' onClick={onClose} />
 
           <Button
-            text={mode.toLowerCase() === "add" ? "Add" : "Save"}
+            text={mode.toLowerCase() === "add" ? "Add Task" : "Save Changes"}
             type='submit'
           />
         </div>
