@@ -15,6 +15,12 @@ const Dashboard = () => {
   const [isModalOpen, setIsMenuOpen] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [taskModalData, setTaskModalData] = useState({});
+  const [selectedFilter, setSelectedFilter] = useState("all");
+
+  const filteredTasks =
+    selectedFilter === "all"
+      ? tasks
+      : tasks.filter((task) => task.status === selectedFilter);
 
   useEffect(() => {
     fetchProfile();
@@ -27,13 +33,16 @@ const Dashboard = () => {
 
       <div className='mt-15 px-6 sm:px-8 py-4 space-y-4'>
         {/* Filter bar */}
-        <FilterBar />
+        <FilterBar
+          selectedFilter={selectedFilter}
+          onFilterChange={setSelectedFilter}
+        />
         {taskLoading ? (
           <p>Loading...</p>
         ) : (
           <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
-            {tasks.length > 0 ? (
-              tasks.map((task) => (
+            {filteredTasks.length > 0 ? (
+              filteredTasks.map((task) => (
                 <TaskCard
                   key={task._id}
                   task={task}
