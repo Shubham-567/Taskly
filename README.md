@@ -2,7 +2,7 @@
 
 Taskly is a modern MERN-based task manager with authentication, task creation, editing, deletion, and status tracking. It's built with Tailwind CSS for a clean, responsive UI.
 
-![Taskly Dashboard Screenshot](./frontend/public/taskly-dashboard.png)
+![Taskly Dashboard Screenshot](./frontend/public/Taskly-Dashboard.png)
 
 ---
 
