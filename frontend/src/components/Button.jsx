@@ -1,8 +1,7 @@
 const Button = ({ text, onClick, className, variant = "primary" }) => {
   const btnVariants = {
-    primary: "bg-primary-500 hover:bg-primary-500/80 text-primary-foreground",
-    secondary:
-      "bg-surface-secondary hover:bg-surface-secondary/80 text-primary-500",
+    primary: "bg-primary hover:bg-primary/80 text-primary-foreground",
+    secondary: "bg-inputs-bg hover:bg-inputs-bg/80 text-primary",
   };
 
   return (
@@ -11,7 +10,7 @@ const Button = ({ text, onClick, className, variant = "primary" }) => {
       className={`${
         variant === "primary" ? btnVariants.primary : btnVariants.secondary
       } 
-      font-medium py-2 px-4 rounded-lg cursor-pointer outline-none focus-within:ring-2 ring-primary-400
+      font-medium py-2 px-4 rounded-lg cursor-pointer outline-none focus-within:ring-2 ring-primary
       ${className}`}>
       {text}
     </button>

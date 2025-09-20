@@ -4,13 +4,11 @@ export const Input = ({ label, icon, type = "text", ...inputProps }) => {
   return (
     <div className='space-y-10'>
       {label ? (
-        <label
-          htmlFor={label + "-input"}
-          className='text-sm text-txt-secondary'>
+        <label htmlFor={label + "-input"} className='text-sm text-txt-muted'>
           {label}
         </label>
       ) : null}
-      <div className='bg-surface-secondary flex items-center gap-2 p-2 border border-border rounded-lg shadow focus-within:ring-2 ring-primary-500 mt-0.5 w-full'>
+      <div className='bg-inputs-bg flex items-center gap-2 p-2 border border-border rounded-lg shadow focus-within:ring-2 ring-primary mt-0.5 w-full'>
         {icon ? <span>{icon}</span> : null}
         <input
           id={label + "-input"}

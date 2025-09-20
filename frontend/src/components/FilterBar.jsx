@@ -15,8 +15,8 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         <button
           className={`py-1 px-4 rounded-md border border-border ${
             selectedFilter === "all"
-              ? "bg-primary-500 text-primary-foreground"
-              : "bg-surface hover:bg-surface/80 text-txt-primary"
+              ? "bg-primary text-primary-foreground"
+              : "bg-card-bg hover:bg-card-bg/80 text-txt"
           } cursor-pointer font-medium text-base`}
           onClick={() => handleFilterChange("all")}>
           All
@@ -24,8 +24,8 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         <button
           className={`py-1 px-4 rounded-md border border-border ${
             selectedFilter === "pending"
-              ? "bg-primary-500 text-primary-foreground"
-              : "bg-surface hover:bg-surface/80 text-txt-primary"
+              ? "bg-primary text-primary-foreground"
+              : "bg-card-bg hover:bg-card-bg/80 text-txt"
           } cursor-pointer font-medium text-base`}
           onClick={() => handleFilterChange("pending")}>
           Pending
@@ -33,8 +33,8 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         <button
           className={`py-1 px-4 rounded-md border border-border ${
             selectedFilter === "completed"
-              ? "bg-primary-500 text-primary-foreground"
-              : "bg-surface hover:bg-surface/80 text-txt-primary"
+              ? "bg-primary text-primary-foreground"
+              : "bg-card-bg hover:bg-card-bg/80 text-txt"
           } cursor-pointer font-medium text-base`}
           onClick={() => handleFilterChange("completed")}>
           Completed

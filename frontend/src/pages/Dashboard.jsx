@@ -64,7 +64,7 @@ const Dashboard = () => {
             setIsMenuOpen(true);
             setTaskModalData({});
           }}
-          className='fixed bottom-6 right-6 p-2 bg-primary-500 hover:opacity-90 rounded-full'>
+          className='fixed bottom-6 right-6 p-2 bg-primary hover:opacity-90 rounded-full'>
           <Plus className='size-6 text-primary-foreground cursor-pointer' />
         </button>
       </div>

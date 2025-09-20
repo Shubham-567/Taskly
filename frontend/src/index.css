@@ -2,46 +2,51 @@
 @import "tailwindcss";
 
 :root {
-  --color-primary-400: hsl(45, 97%, 61%);
-  --color-primary-500: hsl(38, 92%, 50%);
-  --color-primary-600: hsl(34, 94%, 42%);
+  /* Primary */
+  --color-primary: hsl(105, 75%, 43%);
   --color-primary-foreground: hsl(0, 0%, 100%);
 
-  /* Neutral (Light Theme) */
-  --color-bg: hsl(210, 40%, 96%);
-  --color-surface: hsl(0, 0%, 100%);
-  --color-surface-secondary: hsl(210, 40%, 96%);
-  --color-border: hsl(220, 14%, 91%);
-  --color-border-hover: hsl(220, 9%, 85%);
-  --color-txt-primary: hsl(222, 47%, 12%);
-  --color-txt-secondary: hsl(215, 14%, 34%);
-  --color-txt-placeholder: hsl(220, 9%, 46%);
+  /* Backgrounds */
+  --color-bg: hsl(110, 30%, 97%);
+  --color-card-bg: hsl(0, 0%, 100%);
+  --color-inputs-bg: hsl(110, 25%, 94%);
+  --color-border: hsl(110, 20%, 89%);
 
-  --color-danger-400: hsl(0, 94%, 82%);
-  --color-danger-500: hsl(0, 84%, 60%);
-  --color-danger-600: hsl(0, 72%, 51%);
+  /* Text */
+  --color-txt: hsl(110, 15%, 25%);
+  --color-txt-muted: hsl(110, 10%, 50%);
+
+  /* Status (For Alerts)*/
+  --color-danger: hsl(355, 78%, 55%);
+  --color-danger-foreground: hsl(0, 0%, 98%);
+  --color-success: hsl(105, 75%, 43%);
+  --color-success-foreground: hsl(0, 0%, 98%);
+  --color-warning: hsl(45, 100%, 50%);
+  --color-warning-foreground: hsl(45, 100%, 10%);
 }
 
 .dark {
   /* Primary */
-  --color-primary-400: hsl(45, 97%, 61%);
-  --color-primary-500: hsl(38, 92%, 50%);
-  --color-primary-600: hsl(34, 94%, 42%);
-  --color-primary-foreground: hsl(0, 0%, 100%);
+  --color-primary: hsl(105, 85%, 65%);
+  --color-primary-foreground: hsl(105, 80%, 10%);
 
-  /* Neutral (Light Theme) */
-  --color-bg: hsl(222, 47%, 11%);
-  --color-surface: hsl(217, 33%, 17%);
-  --color-surface-secondary: hsl(215, 25%, 27%);
-  --color-border: hsl(215, 25%, 27%);
-  --color-border-hover: hsl(215, 19%, 35%);
-  --color-txt-primary: hsl(210, 40%, 96%);
-  --color-txt-secondary: hsl(215, 20%, 65%);
-  --color-txt-placeholder: hsl(215, 16%, 47%);
+  /* Backgrounds */
+  --color-bg: hsl(220, 15%, 8%);
+  --color-card-bg: hsl(220, 15%, 14%);
+  --color-inputs-bg: hsl(220, 15%, 19%);
+  --color-border: hsl(220, 10%, 25%);
 
-  --color-danger-400: hsl(0, 94%, 82%);
-  --color-danger-500: hsl(0, 84%, 60%);
-  --color-danger-600: hsl(0, 72%, 51%);
+  /* Text */
+  --color-txt: hsl(210, 17%, 89%);
+  --color-txt-muted: hsl(210, 15%, 60%);
+
+  /* Status (For Alerts)*/
+  --color-danger: hsl(355, 80%, 65%);
+  --color-danger-foreground: hsl(0, 0%, 98%);
+  --color-success: hsl(105, 70%, 55%);
+  --color-success-foreground: hsl(0, 0%, 98%);
+  --color-warning: hsl(45, 100%, 60%);
+  --color-warning-foreground: hsl(45, 100%, 10%);
 }
 
 @theme {
@@ -49,35 +54,37 @@
   --color-*: initial;
 
   /* Primary */
-  --color-primary-400: var(--color-primary-400);
-  --color-primary-500: var(--color-primary-500);
-  --color-primary-600: var(--color-primary-600);
-  --color-primary-foreground: var(--color-primary-600);
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
 
-  /* Neutral (Light Theme) */
+  /* Backgrounds */
   --color-bg: var(--color-bg);
-  --color-surface: var(--color-surface);
-  --color-surface-secondary: var(--color-surface-secondary);
+  --color-card-bg: var(--color-card-bg);
+  --color-inputs-bg: var(--color-inputs-bg);
   --color-border: var(--color-border);
-  --color-border-hover: var(--color-border-hover);
-  --color-txt-primary: var(--color-txt-primary);
-  --color-txt-secondary: var(--color-txt-secondary);
-  --color-txt-placeholder: var(--color-txt-placeholder);
 
-  --color-danger-400: var(--color-danger-400);
-  --color-danger-500: var(--color-danger-500);
-  --color-danger-600: var(--color-danger-600);
+  /* Text */
+  --color-txt: var(--color-txt);
+  --color-txt-muted: var(--color-txt-muted);
+
+  /* Status (For Alerts)*/
+  --color-danger: var(--color-danger);
+  --color-danger-foreground: var(--color-danger-foreground);
+  --color-success: var(--color-success);
+  --color-success-foreground: var(--color-success-foreground);
+  --color-warning: var(--color-warning);
+  --color-warning-foreground: var(--color-warning-foreground);
 }
 
 @layer base {
   body {
-    @apply bg-bg text-txt-primary;
+    @apply bg-bg text-txt;
     font-family: "Inter", sans-serif;
   }
 }
 
 @layer components {
   .card {
-    @apply bg-surface rounded-2xl shadow-lg;
+    @apply bg-card-bg rounded-2xl shadow-lg;
   }
 }

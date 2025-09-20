@@ -36,8 +36,8 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
     <div className='bg-bg/60 backdrop-blur-[1px] fixed top-0 left-0 w-full h-full flex justify-center items-center'>
       <form
         onSubmit={handleSubmit}
-        className='bg-surface rounded-lg shadow-lg p-6 space-y-4 w-full max-w-md'>
-        <h2 className='text-2xl font-semibold text-txt-primary'>
+        className='bg-card-bg rounded-lg shadow-lg p-6 space-y-4 w-full max-w-md'>
+        <h2 className='text-2xl font-semibold text-txt'>
           {mode.toLowerCase() === "add" ? "Add" : "Edit"} Task
         </h2>
 
@@ -49,11 +49,11 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
         />
 
         <div className='space-y-10'>
-          <label htmlFor={"Description"} className='text-sm text-txt-secondary'>
+          <label htmlFor={"Description"} className='text-sm text-txt-muted'>
             Description
           </label>
 
-          <div className='bg-surface-secondary flex items-center gap-2 p-2 border border-border rounded-lg shadow   focus-within:ring-2 ring-primary-500 mt-0.5 w-full'>
+          <div className='bg-inputs-bg flex items-center gap-2 p-2 border border-border rounded-lg shadow   focus-within:ring-2 ring-primary mt-0.5 w-full'>
             <textarea
               className='w-full outline-none border-none min-h-[8.5rem]'
               placeholder='Add more details... (optional)'
@@ -66,8 +66,8 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
         </div>
 
         {mode.toLowerCase() === "edit" && (
-          <div className='flex items-center justify-between gap-4 p-4 bg-surface-secondary/50 rounded-lg'>
-            <span className='font-medium text-txt-primary'>Status</span>
+          <div className='flex items-center justify-between gap-4 p-4 bg-inputs-bg/50 rounded-lg'>
+            <span className='font-medium text-txt'>Status</span>
 
             <label className='inline-flex items-center cursor-pointer'>
               <input
@@ -83,18 +83,18 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
                 }
               />
 
-              <span className='me-3 text-sm font-medium text-primary-500 peer-checked:text-txt-primary'>
+              <span className='me-3 text-sm font-medium text-primary peer-checked:text-txt'>
                 Pending
               </span>
 
               <div
-                className="relative w-11 h-6 bg-surface-secondary rounded-full 
-                peer peer-checked:after:translate-x-full peer-checked:bg-primary-500 
+                className="relative w-11 h-6 bg-inputs-bg rounded-full 
+                peer peer-checked:after:translate-x-full peer-checked:bg-primary 
                 after:content-[''] after:absolute after:top-[2px] after:start-[2px] 
                 after:bg-primary-foreground after:rounded-full after:size-5 after:transition-all
-                peer-focus:outline-none ring-2 ring-border-hover peer-focus:ring-primary-500"></div>
+                peer-focus:outline-none ring-2 ring-border/80 peer-focus:ring-primary"></div>
 
-              <span className='ms-3 text-sm font-medium text-txt-primary peer-checked:text-primary-500'>
+              <span className='ms-3 text-sm font-medium text-txt peer-checked:text-primary'>
                 Completed
               </span>
             </label>

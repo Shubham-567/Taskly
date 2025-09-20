@@ -27,18 +27,18 @@ const AuthPage = () => {
 
   return (
     <div className='min-h-screen bg-bg flex items-center justify-center px-4'>
-      <div className='w-full max-w-4xl bg-surface rounded-2xl shadow-lg flex max-md:flex-col overflow-hidden md:divide-x-2 divide-border'>
+      <div className='w-full max-w-4xl bg-card-bg rounded-2xl shadow-lg flex max-md:flex-col overflow-hidden md:divide-x-2 divide-border'>
         {/* left side */}
-        <div className='flex w-full md:w-1/2 flex-col justify-center md:items-center bg-surface max-md:pb-0 p-6 md:p-10'>
-          <div className='flex items-center justify-center size-14 bg-primary-500 rounded-lg mb-3 md:mb-6'>
+        <div className='flex w-full md:w-1/2 flex-col justify-center md:items-center bg-card-bg max-md:pb-0 p-6 md:p-10'>
+          <div className='flex items-center justify-center size-14 bg-primary rounded-lg mb-3 md:mb-6'>
             <User className='text-primary-foreground size-7' />
           </div>
 
-          <h2 className='text-3xl font-bold text-txt-primary'>
+          <h2 className='text-3xl font-bold text-txt'>
             {mode === "signup" ? "Welcome Aboard!" : "Welcome Back!"}
           </h2>
 
-          <p className='mt-2 text-txt-secondary md:text-center'>
+          <p className='mt-2 text-txt-muted md:text-center'>
             {mode === "signup"
               ? "Join us to unlock exclusive features and become part of our community."
               : "Login to continue managing your tasks efficiently."}
@@ -50,7 +50,7 @@ const AuthPage = () => {
               : "Don't have an account? "}
             <button
               onClick={() => setMode(mode === "signup" ? "login" : "signup")}
-              className='text-primary-500 hover:underline cursor-pointer'>
+              className='text-primary hover:underline cursor-pointer'>
               {mode === "signup" ? "Login" : "Sign Up"}
             </button>
           </p>
@@ -58,10 +58,10 @@ const AuthPage = () => {
 
         {/* right side - form */}
         <div className='w-full md:w-1/2 p-6 md:p-10'>
-          <h2 className='text-2xl font-semibold text-txt-primary mb-2 hidden md:block'>
+          <h2 className='text-2xl font-semibold text-txt mb-2 hidden md:block'>
             {mode === "signup" ? "Create Account" : "Sign In"}
           </h2>
-          <p className='text-sm text-txt-secondary mb-4 hidden md:block'>
+          <p className='text-sm text-txt-muted mb-4 hidden md:block'>
             {mode === "signup"
               ? "Fill in the details below to get started."
               : "Enter your email and password to sign in."}
@@ -73,7 +73,7 @@ const AuthPage = () => {
                 type='text'
                 label='Name'
                 placeholder='John Deo'
-                icon={<User className='size-4 text-txt-secondary' />}
+                icon={<User className='size-4 text-txt-muted' />}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
               />
@@ -82,7 +82,7 @@ const AuthPage = () => {
               type='email'
               label='Email'
               placeholder='JohnDeo@example.com'
-              icon={<Mail className='size-4 text-txt-secondary' />}
+              icon={<Mail className='size-4 text-txt-muted' />}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
             />
@@ -90,19 +90,15 @@ const AuthPage = () => {
               type='password'
               label='Password'
               placeholder='********'
-              icon={<Lock className='size-4 text-txt-secondary' />}
+              icon={<Lock className='size-4 text-txt-muted' />}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
             />
             <div className='flex items-center gap-2'>
-              <input
-                id='terms'
-                type='checkbox'
-                className='accent-primary-500'
-              />
-              <label htmlFor='terms' className='text-sm text-txt-secondary'>
+              <input id='terms' type='checkbox' className='accent-primary' />
+              <label htmlFor='terms' className='text-sm text-txt-muted'>
                 I accept the{" "}
-                <span className='text-primary-500 cursor-pointer hover:underline'>
+                <span className='text-primary cursor-pointer hover:underline'>
                   terms and conditions
                 </span>
               </label>
@@ -122,7 +118,7 @@ const AuthPage = () => {
 
           {error ? (
             // todo: add toast for error
-            <p className='text-sm text-danger-500 text-center mt-2'>{error}</p>
+            <p className='text-sm text-danger text-center mt-2'>{error}</p>
           ) : null}
 
           <p className='mt-4 text-sm font-medium md:hidden'>
@@ -131,7 +127,7 @@ const AuthPage = () => {
               : "Don't have an account? "}
             <button
               onClick={() => setMode(mode === "signup" ? "login" : "signup")}
-              className='text-primary-500 hover:underline cursor-pointer'>
+              className='text-primary hover:underline cursor-pointer'>
               {mode === "signup" ? "Login" : "Sign Up"}
             </button>
           </p>
