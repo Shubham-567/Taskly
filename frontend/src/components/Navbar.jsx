@@ -18,7 +18,7 @@ const Navbar = () => {
       <nav className='flex items-center justify-between gap-4 text-2xl font-semibold'>
         <Link href='/' className='logo flex items-center gap-2'>
           <Box className='size-8 text-primary' />
-          <span>TaskFlow</span>
+          <span>Taskly</span>
         </Link>
 
         <div className='flex items-center gap-4 md:gap-6'>

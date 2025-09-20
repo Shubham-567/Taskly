@@ -1,34 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
+/* Option 6B: Light Theme */
 :root {
   /* Primary */
-  --color-primary: hsl(105, 75%, 43%);
-  --color-primary-foreground: hsl(0, 0%, 100%);
+  --color-primary: hsl(190, 90%, 50%);
+  --color-primary-foreground: hsl(190, 90%, 10%);
 
   /* Backgrounds */
-  --color-bg: hsl(110, 30%, 97%);
+  --color-bg: hsl(190, 40%, 97%); 
   --color-card-bg: hsl(0, 0%, 100%);
-  --color-inputs-bg: hsl(110, 25%, 94%);
-  --color-border: hsl(110, 20%, 89%);
+  --color-inputs-bg: hsl(190, 35%, 94%);
+  --color-border: hsl(190, 25%, 89%);
 
   /* Text */
-  --color-txt: hsl(110, 15%, 25%);
-  --color-txt-muted: hsl(110, 10%, 50%);
+  --color-txt: hsl(190, 25%, 25%); 
+  --color-txt-muted: hsl(190, 15%, 50%);
 
-  /* Status (For Alerts)*/
+/* Status (For Alerts)*/
   --color-danger: hsl(355, 78%, 55%);
   --color-danger-foreground: hsl(0, 0%, 98%);
-  --color-success: hsl(105, 75%, 43%);
+  --color-success: hsl(156, 82%, 33%);
   --color-success-foreground: hsl(0, 0%, 98%);
-  --color-warning: hsl(45, 100%, 50%);
-  --color-warning-foreground: hsl(45, 100%, 10%);
+  --color-warning: hsl(35, 91%, 55%);
+  --color-warning-foreground: hsl(35, 91%, 15%);
 }
+
 
 .dark {
   /* Primary */
-  --color-primary: hsl(105, 85%, 65%);
-  --color-primary-foreground: hsl(105, 80%, 10%);
+  --color-primary: hsl(190, 95%, 65%);
+  --color-primary-foreground: hsl(190, 90%, 10%);
 
   /* Backgrounds */
   --color-bg: hsl(220, 15%, 8%);
@@ -40,13 +42,13 @@
   --color-txt: hsl(210, 17%, 89%);
   --color-txt-muted: hsl(210, 15%, 60%);
 
-  /* Status (For Alerts)*/
+ /* Status (For Alerts)*/
   --color-danger: hsl(355, 80%, 65%);
   --color-danger-foreground: hsl(0, 0%, 98%);
-  --color-success: hsl(105, 70%, 55%);
+  --color-success: hsl(156, 70%, 45%);
   --color-success-foreground: hsl(0, 0%, 98%);
-  --color-warning: hsl(45, 100%, 60%);
-  --color-warning-foreground: hsl(45, 100%, 10%);
+  --color-warning: hsl(35, 100%, 65%);
+  --color-warning-foreground: hsl(35, 91%, 15%);
 }
 
 @theme {
