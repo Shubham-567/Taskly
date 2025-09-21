@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "./Button";
 import { Input } from "./Input";
 import useTaskStore from "../store/taskStore";
+import { toast } from "react-toastify";
 
 const TaskModal = ({ onClose, mode = "add", task }) => {
   const { addTask, editTask } = useTaskStore();
@@ -16,7 +17,8 @@ const TaskModal = ({ onClose, mode = "add", task }) => {
     e.preventDefault();
 
     if (!form.title && !form.description) {
-      alert("Task title and description are required");
+      toast.error("Title and description are required");
+      return;
     }
 
     if (mode.toLowerCase() === "add") {

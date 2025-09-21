@@ -6,6 +6,7 @@ import {
   fetchTasks,
   toggleTaskStatus,
 } from "../services/taskApi";
+import { toast } from "react-toastify";
 
 const useTaskStore = create((set, get) => ({
   tasks: [],
@@ -24,6 +25,8 @@ const useTaskStore = create((set, get) => ({
         error: err.response?.data?.message || "Failed to load task",
         taskLoading: false,
       });
+
+      toast.error("Failed to load task");
     }
   },
 
@@ -31,8 +34,12 @@ const useTaskStore = create((set, get) => ({
     try {
       const newTask = await createTask(data);
       set({ tasks: [newTask, ...get().tasks] });
+
+      toast.success("Task created successfully");
     } catch (err) {
       set({ error: err.response?.data?.message || "Failed to create task" });
+
+      toast.error("Failed to create task");
     }
   },
 
@@ -43,8 +50,12 @@ const useTaskStore = create((set, get) => ({
       set({
         tasks: get().tasks.map((task) => (task._id === id ? updated : task)),
       });
+
+      toast.success("Task updated successfully");
     } catch (err) {
       set({ error: err.response?.data?.message || "Failed to update task" });
+
+      toast.error("Failed to update task");
     }
   },
 
@@ -52,23 +63,33 @@ const useTaskStore = create((set, get) => ({
     try {
       await deleteTask(id);
 
-      set((state) => ({
+      set({
         tasks: get().tasks.filter((task) => task._id !== id),
-      }));
+      });
+
+      toast.success("Task deleted successfully");
     } catch (err) {
       set({ error: err.response?.data?.message || "Failed to delete task" });
+
+      toast.error("Failed to delete task");
     }
   },
 
   toggleTaskStatus: async (id) => {
     try {
-      const updated = await toggleTaskStatus(id);
+      const updated = await toast.promise(toggleTaskStatus(id), {
+        pending: "Toggling task status...",
+        success: "Task status toggled successfully",
+        error: "Failed to toggle task status",
+      });
 
-      set((state) => ({
+      set({
         tasks: get().tasks.map((task) => (task._id === id ? updated : task)),
-      }));
+      });
     } catch (err) {
       set({ error: err.response?.data?.message || "Failed to toggle task" });
+
+      toast.error("Failed to toggle task");
     }
   },
 }));

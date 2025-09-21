@@ -57,7 +57,9 @@ const TaskCard = ({ task, openModal }) => {
       {showConfirmationModal ? (
         <ConfirmationModal
           onClose={() => setShowConfirmationModal(false)}
-          onConfirm={() => removeTask(task._id)}
+          onConfirm={ () => {
+             removeTask(task._id);
+          }}
         />
       ) : null}
     </>

@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { getProfile, loginUser, registerUser } from "../services/authApi";
 
+import { toast } from "react-toastify";
+
 const useAuthStore = create((set) => ({
   user: null,
   token: localStorage.getItem("token") || null,
@@ -15,11 +17,15 @@ const useAuthStore = create((set) => ({
       localStorage.setItem("token", res.token);
 
       set({ user: res, token: res.token, userLoading: false });
+
+      toast.success("Registration successful");
     } catch (err) {
       set({
         error: err.response?.data?.message || "Registration failed",
         userLoading: false,
       });
+
+      toast.error("Registration failed");
     }
   },
 
@@ -31,17 +37,23 @@ const useAuthStore = create((set) => ({
       localStorage.setItem("token", res.token);
 
       set({ user: res, token: res.token, userLoading: false });
+
+      toast.success("Login successful");
     } catch (err) {
       set({
         error: err.response?.data?.message || "Login failed",
         userLoading: false,
       });
+
+      toast.error("Login failed");
     }
   },
 
   logout: () => {
     localStorage.removeItem("token");
     set({ user: null, token: null, error: null });
+
+    toast.success("Logout successful");
   },
 
   fetchProfile: async () => {
