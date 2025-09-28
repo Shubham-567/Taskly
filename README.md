@@ -13,6 +13,15 @@ Taskly is a modern MERN-based task manager with authentication, task creation, e
 
 ---
 
+## Demo Credentials
+
+To test the application without registering, you can use the following credentials:
+
+- **Email:** `shubham@test.in`
+- **Password:** `pass@123`
+
+---
+
 ## Features
 
 - **Authentication:** Secure user signup and login using JWT.

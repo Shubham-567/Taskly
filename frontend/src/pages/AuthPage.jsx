@@ -53,7 +53,11 @@ const AuthPage = () => {
               ? "Already have an account? "
               : "Don't have an account? "}
             <button
-              onClick={() => setMode(mode === "signup" ? "login" : "signup")}
+              onClick={() => {
+                loading
+                  ? null
+                  : setMode(mode === "signup" ? "login" : "signup");
+              }}
               className='text-primary hover:underline cursor-pointer'>
               {mode === "signup" ? "Login" : "Sign Up"}
             </button>
@@ -134,7 +138,11 @@ const AuthPage = () => {
               ? "Already have an account? "
               : "Don't have an account? "}
             <button
-              onClick={() => setMode(mode === "signup" ? "login" : "signup")}
+              onClick={() => {
+                loading
+                  ? null
+                  : setMode(mode === "signup" ? "login" : "signup");
+              }}
               className='text-primary hover:underline cursor-pointer'>
               {mode === "signup" ? "Login" : "Sign Up"}
             </button>

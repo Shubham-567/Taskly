@@ -39,7 +39,7 @@ const App = () => {
           }
         />
 
-        <Route path='*' element={<p>Not Found 404</p>} />
+        <Route path='*' element={<Navigate to='/' />} />
       </Routes>
     </BrowserRouter>
   );
