@@ -6,46 +6,46 @@ import { toast } from "react-toastify";
 const useAuthStore = create((set) => ({
   user: null,
   token: localStorage.getItem("token") || null,
-  userLoading: false,
+  loading: false,
   error: null,
 
   register: async (data) => {
     try {
-      set({ userLoading: true, error: null });
+      set({ loading: true, error: null });
 
       const res = await registerUser(data);
       localStorage.setItem("token", res.token);
 
-      set({ user: res, token: res.token, userLoading: false });
+      set({ user: res, token: res.token, loading: false });
 
       toast.success("Registration successful");
     } catch (err) {
       set({
         error: err.response?.data?.message || "Registration failed",
-        userLoading: false,
+        loading: false,
       });
 
-      toast.error("Registration failed");
+      // toast.error("Registration failed");
     }
   },
 
   login: async (data) => {
     try {
-      set({ userLoading: true, error: null });
+      set({ loading: true, error: null });
 
       const res = await loginUser(data);
       localStorage.setItem("token", res.token);
 
-      set({ user: res, token: res.token, userLoading: false });
+      set({ user: res, token: res.token, loading: false });
 
       toast.success("Login successful");
     } catch (err) {
       set({
         error: err.response?.data?.message || "Login failed",
-        userLoading: false,
+        loading: false,
       });
 
-      toast.error("Login failed");
+      // toast.error("Login failed");
     }
   },
 
@@ -58,13 +58,13 @@ const useAuthStore = create((set) => ({
 
   fetchProfile: async () => {
     try {
-      set({ userLoading: true });
+      set({ loading: true });
 
       const res = await getProfile();
 
-      set({ user: res, userLoading: false });
+      set({ user: res, loading: false });
     } catch (err) {
-      set({ user: null, token: null, userLoading: false });
+      set({ user: null, token: null, loading: false });
       localStorage.removeItem("token");
     }
   },

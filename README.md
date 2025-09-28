@@ -38,6 +38,7 @@ Taskly is a modern MERN-based task manager with authentication, task creation, e
 - Tailwind CSS
 - Axios
 - Lucide React
+- React Toastify
 
 ---
 

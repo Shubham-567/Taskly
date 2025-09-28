@@ -9,12 +9,16 @@ const AuthPage = () => {
   const [mode, setMode] = useState("login"); // 'login' or 'signup'
   const [form, setForm] = useState({ name: "", email: "", password: "" });
 
-  const { register, login, error, leading, token } = useAuthStore();
+  const { register, login, error, loading, token } = useAuthStore();
 
   if (token !== null) return <Navigate to='/' />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!form.name && !form.email && !form.password) {
+      return;
+    }
 
     if (mode === "signup") {
       await register(form);
@@ -76,6 +80,7 @@ const AuthPage = () => {
                 icon={<User className='size-4 text-txt-muted' />}
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
+                required
               />
             ) : null}
             <Input
@@ -85,6 +90,7 @@ const AuthPage = () => {
               icon={<Mail className='size-4 text-txt-muted' />}
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
+              required
             />
             <Input
               type='password'
@@ -93,6 +99,7 @@ const AuthPage = () => {
               icon={<Lock className='size-4 text-txt-muted' />}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
+              required
             />
             <div className='flex items-center gap-2'>
               <input id='terms' type='checkbox' className='accent-primary' />
@@ -106,13 +113,14 @@ const AuthPage = () => {
             <Button
               type='submit'
               text={
-                leading
+                loading
                   ? "Loading..."
                   : mode === "signup"
                   ? "Sign Up"
                   : "Sign In"
               }
-              className='w-full'
+              className={`w-full ${loading ? "cursor-not-allowed" : ""}`}
+              disabled={loading}
             />
           </form>
 
